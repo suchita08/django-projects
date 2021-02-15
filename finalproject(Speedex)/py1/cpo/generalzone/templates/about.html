@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Call Processing Optimization</title>
+    <style>
+        #outer
+        {
+        height:1000px;
+        width:1000px;
+        //border:1px solid;
+        //background-color:black;
+        margin:auto;
+
+        }
+        #parent1
+        {
+        height:100px;
+        width:1000px;
+        //background-color:red;
+        }
+        #child1
+        {
+        height:100px;
+        width:150px;
+        background-color:black;
+        float:left;
+        }
+       #child2
+       {
+       height:100px;
+       width:850px;
+       background-color:pink;
+       float:right;
+       }
+        #parent2
+        {
+        height:50px;
+        width:1000px;
+        background-color:yellow;
+        }
+        #parent3
+        {
+        height:250px;
+        width:1000px;
+        background-color:green;
+        }
+        #parent4
+        {
+        height:350px;
+        width:1000px;
+        //background-color:red;
+        }
+        #child3
+        {
+        height:350px;
+        width:300px;
+        background-color:blue;
+        float:left
+        }
+         #child4
+        {
+        height:350px;
+        width:700px;
+        background-color:orange;
+        float:right;
+        }
+        #parent5
+        {
+        height:200px;
+        width:1000px;
+        //background-color:red;
+        }
+        #child5
+        {
+        height:200px;
+        width:500px;
+        background-color:gray;
+        float:left;
+        }
+        #child6
+        {
+        height:200px;
+        width:500px;
+        background-color:yellow;
+        float:right;
+        }
+        #menu
+        {
+        height:100px;
+        width:1000px;
+        border:1px solid white;
+        margin:auto;
+        }
+        #menu ul
+        {
+        list-style-type:none;
+        line-height:24px;
+        }
+        #menu ul li
+        {
+        color:red;
+        display:inline;
+        padding:60px;
+        }
+        #menu ul li a
+        {
+        color:black;
+        text-decoration:none;
+        }
+        #menu ul li a:hover
+        {
+        color:red;
+        }
+    </style>
+    <script>
+        var images=["pic4.jpg","solitare.jpg","superior.jpg","photo8.jpg"];
+        var i=0;
+        baseUrl="{% static 'images/'%}";
+        function moveslider()
+        {
+        if(i==4)
+        {
+        i=0;
+        }
+        document.getElementById("slide").src=baseUrl+images[i];
+        i++;
+        window.setTimeout("moveslider()",1000);
+        }
+    </script>
+
+</head>
+<body onload="moveslider()">
+<div id="outer">
+    <div id="parent1">
+        <div id="child1">
+            <img src="{% static 'images/mobile.jpg' %}" width="150px" height="100px" />
+        </div>
+        <div id="child2">
+            <center>
+            <h1 style="color:black;">call processing optimization</h1>
+            </center>
+        </div>
+    </div>
+        <div id="parent2">
+            <div id="menu">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About us</a></li>
+                <li><a href="{% url 'registration' %}">Registration</a></li>
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'enquiry' %}">Enquiry</a></li>
+
+            </ul>
+            </div>
+        </div>
+        <div id="parent3">
+            <img id="slide" width="1000" height="250"/>
+
+        </div>
+        <div id="parent4">
+            <div id="child3">
+                 <marquee direction="up" height="400px" onmouseover="stop()" onmouseout="start()">
+                {% for n in nf %}
+                <span style="text-align:center;">
+                <p style="color:red;font-size:20px;">{{n.notificationtext}}</p>
+                <p>{{n.posteddate}}</p>
+                </span>
+
+                {% endfor %}
+                </marquee>
+            </div>
+            <div id="child4">
+</div>
+        </div>
+    <div id="parent5">
+        <div id="child5">
+            <center> <h1>copyright &copy to cpo</h1></center>
+        </div>
+        <div id="child6">
+            <center><h1> Developed by:shivani</h1></center>
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FILE UPLOAD DEMO</title>
+</head>
+<body>
+  <h2> Upload File</h2>
+  <hr/>
+   <form method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       Select file to upload:
+       <input type="file" name="myfile"/>
+       <input type="submit" value="upload"/>
+   </form>
+    {% if msg %}
+      <p style="color:blue">{{msg}}</p>
+    {% endif %}
+</body>
+</html>

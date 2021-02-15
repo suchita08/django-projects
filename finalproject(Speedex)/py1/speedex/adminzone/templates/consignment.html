@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speedex Courier</title>
+    <style>
+	#slider
+	{
+		height:500px;
+		width:1330px;
+		border:1px solid;
+		background-size:100% 100%;
+		background-repeat:no-repeat;
+		margin-bottom:10px;
+		background-attachement:absolute;
+	}
+	</style>
+
+</head>
+<body>
+<div class="container-fluid" style="min-height:850px;border:1px solid;height:auto;">
+    <div  class="row" class="col-sm-12" style="min-height:90px;background-color:black;">
+        <div class="col-sm-6" style="min-height:90px;width:300px;float:left;">
+            {% load static %}
+            <img src="{% static 'images/logo.png' %}" height="90px" width="200px;"/>
+        </div>
+        <div class="col-sm-6" style="min-height:80px;width:700px;float:right;margin-left:30px;">
+            <p class="h1" style="font-size:30px;color:white;font-style:oblique;"><em>SPEEDEX COURIER SERVICE</em></p>
+        </div>
+    </div>
+    <div  class="row" class="col-sm-12" style="min-height:40px;">
+        <div id="menu3">
+		<ul style="list-style-type:none;">
+			<li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:adminhome' %}">Admin HOME</a></li>
+			<li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:enquiries' %}">Enquiries </a></li>
+			<li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:complains' %}">Complains</a></li>
+			<li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:consignment' %}">Consignment </a></li>
+            <li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:jobseekers' %}">Job Seekers </a></li>
+            <li style="display:inline-block;text-align:center;width:150px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:logout' %}">Logout</a></li>
+		</ul>
+        </div>
+    </div>
+    <div  id="middle" style="min-height:600px;border:1px solid;background-image:url('static/images/w1.jpeg');background-size:100% 100%;height:auto;">
+        <form action="{% url 'adminzone:saveconsignment' %}" method="post">
+            {% csrf_token %}
+            <h2 style="font-size:40px;color:purple;font-style:oblique;text-align:center;"><strong>Add Consignment</strong></h2>
+            <table border="1" style="width:50%;margin:0 auto;">
+                <tr>
+                    <td>Enter Refernce Number</td>
+                    <td><input type="text" name="refno" required/></td>
+                </tr>
+                <tr>
+                    <td>Enter Sender Name</td>
+                    <td><input type="text" name="sendername" required/> </td>
+                </tr>
+                <tr>
+                    <td>Enter Sender Address</td>
+                    <td><textarea name="senderaddress" style="height:100px;resize:none;" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Enter Sender Contactno</td>
+                    <td><input type="text" name="sendercontactno" required/> </td>
+                </tr>
+                <tr>
+                    <td>Enter Receiver Name</td>
+                    <td><input type="text" name="receivername" required/> </td>
+                </tr>
+                <tr>
+                    <td>Enter Receiver Address</td>
+                    <td><textarea name="receiveraddress" style="height:100px;resize:none;" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Select Source City</td>
+                    <td><select name="source">
+                        {% for c in city %}
+                        <option>{{c.cityname}}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Select Current City</td>
+                    <td><select name="currentcity">
+                          {% for c in city %}
+                        <option>{{c.cityname}}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Select Destination</td>
+                    <td><select name="destination">
+                          {% for c in city %}
+                        <option>{{c.cityname}}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Select status</td>
+                    <td><select name="status">
+                        <option>Initiated</option>
+                        <option>Pipeline</option>
+                        <option>Delivered</option>
+                        <option>Cancelled</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>
+                        {% if msg %}
+                        {{msg}}
+                        {% endif %}
+                    </td>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div  class="row" class="col-sm-12" style=min-height:80px;background:black;>
+        <div class="col-sm-6" style="min-height:80px;color:white;float:left;font-size:25px;margin-left:15px;">
+        <p class="h1">Copyright &copy; TO SPEEDEX</p>
+        </div>
+        <div class="col-sm-6" style="min-height:80px;color:white;float:right;font-size:25px;margin-right:15px;">
+            <p class="h1">Developed By:Suchita</p>
+         </div>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

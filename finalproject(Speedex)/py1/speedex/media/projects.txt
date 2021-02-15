@@ -1,0 +1,34 @@
+**Speedex Courier:
+
+MODULES=>
+1)Customer Information.
+2)Job seeker management
+3)Courier Management
+4)Complain management
+5)Login info 
+6)Packet tracking
+7)Location manager
+8)SMS API Integration
+9)Notification Management
+10)Credential Management.
+TWO ZONES=>
+a)General Zone
+b)Admin zone
+
+**Call Processing Optimization(CPO)  Norpal
+MODULES=>
+1)Login Management
+2)Customer Info
+3)Knowledgebase Management
+4)Enquiry Management
+5)Complain Login System 
+6)Secured Chat
+7)SMS API Integration
+8)Notification management
+9)User management
+10)Expert Search
+11)Unhandled Queries Management.
+ZONES=>
+a)General zone
+b)User zone
+c)Admin zone

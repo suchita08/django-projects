@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speedex Courier</title>
+    <style>
+	#slider
+	{
+		height:500px;
+		width:1330px;
+		border:1px solid;
+		background-size:100% 100%;
+		background-repeat:no-repeat;
+		margin-bottom:10px;
+		background-attachement:absolute;
+	}
+	</style>
+
+</head>
+<body>
+<div class="container-fluid" style="min-height:850px;border:1px solid;height:auto;">
+    <div  class="row" class="col-sm-12" style="min-height:90px;background-color:black;">
+        <div class="col-sm-6" style="min-height:90px;width:300px;float:left;">
+            {% load static %}
+            <img src="{% static 'images/logo.png' %}" height="90px" width="200px;"/>
+        </div>
+        <div class="col-sm-6" style="min-height:80px;width:700px;float:right;margin-left:30px;">
+            <p class="h1" style="font-size:30px;color:white;font-family:forte;"><em>SPEEDEX COURIER SERVICE</em></p>
+        </div>
+    </div>
+    <div  class="row" class="col-sm-12" style="min-height:40px;">
+        <div id="menu3">
+		<ul style="list-style-type:none;">
+			<li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:adminhome' %}">Admin HOME</a></li>
+			<li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:enquiries' %}">Enquiries </a></li>
+			<li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:complains' %}">Complains</a></li>
+			<li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:consignment' %}">Consignment </a></li>
+            <li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:jobseekers' %}">Job Seekers </a></li>
+            <li style="display:inline-block;text-align:center;width:180px;padding:15px;background-color:orange;border-radius:10px;"> <a href="{% url 'adminzone:logout' %}">Logout</a></li>
+		</ul>
+        </div>
+    </div>
+    <div  id="middle" style="min-height:600px;border:1px solid;background-color:white;;height:auto;">
+        <form action="{% url 'adminzone:addnotification' %}" method="post">
+            {% csrf_token %}
+            <h2 style="color:pink;text-align:center;text-size:80px;font-family:forte;font-size:40px;"><u><em>&nbspADD NOTIFICATIONS</em></u></h2>
+            <table style="width:60%;margin:0 auto;background-color:grey;border:5px solid cyan;height:300px;">
+                <tr>
+                    <td><span style="font-size:20px;color:blue;text-align:center;">&nbsp Enter Notification</span></td>
+                    <td><textarea name="notificationtext" required style="height:150px;resize:none;text-align:center;"></textarea></td>
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td><input type="submit" value="ADD"/></td>
+                </tr>
+
+            </table>
+
+        </form><br/><br/><br/>
+        <table border="1" style="width:80%;margin:0 auto;">
+            <tr>
+                <th>ID</th>
+                <th>Notification Text</th>
+                <th>Posted Date</th>
+                <th>Delete</th>
+            </tr>
+            {% for n in nf %}
+            <tr>
+                <td>{{n.id}}</td>
+                <td>{{n.notificationtext}}</td>
+                <td>{{n.posteddate}}</td>
+                <td><a href="{% url 'adminzone:deletenotification' n.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div  class="row" class="col-sm-12" style=min-height:50px;background:black;>
+        <div class="col-sm-6" style="min-height:80px;color:white;float:left;font-size:25px;margin-left:15px;">
+        <p class="h1">Copyright &copy; TO SPEEDEX</p>
+        </div>
+        <div class="col-sm-6" style="min-height:80px;color:white;float:right;font-size:25px;margin-right:15px;">
+            <p class="h1">Developed By:Suchita</p>
+         </div>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
